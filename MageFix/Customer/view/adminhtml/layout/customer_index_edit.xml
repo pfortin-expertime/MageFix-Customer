@@ -1,0 +1,7 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="customer_form">
+            <block class="MageFix\Customer\Block\Adminhtml\Edit\Tab\Carts" name="customer_edit_tab_employee_carts"/>
+        </referenceBlock>
+    </body>
+</page>
