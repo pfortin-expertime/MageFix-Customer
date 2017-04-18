@@ -1,0 +1,56 @@
+<?php /* @var $block \Magento\Customer\Block\Adminhtml\Edit\Tab\Cart */ ?>
+<?php if ($block->getCartHeader()): ?>
+<div class="content-header skip-header">
+    <table>
+        <tr>
+            <td style="width:50%;"><h4><?php echo $block->getCartHeader(); ?></h4></td>
+        </tr>
+    </table>
+</div>
+<?php endif ?>
+<?php echo $block->getGridParentHtml() ?>
+<?php if ($block->canDisplayContainer()) : ?>
+<?php
+    $listType = $block->getJsObjectName();
+?>
+<script type="text/javascript">
+<?php echo $block->getJsObjectName() ?>cartControl = {
+    reload: function (params) {
+        if (!params) {
+            params = {};
+        }
+        <?php echo $block->getJsObjectName() ?>.reloadParams = params;
+        <?php echo $block->getJsObjectName() ?>.reload();
+        <?php echo $block->getJsObjectName() ?>.reloadParams = {};
+    },
+
+    configureItem: function (itemId) {
+        productConfigure.setOnLoadIFrameCallback('<?php echo $listType ?>', this.cbOnLoadIframe.bind(this));
+        productConfigure.showItemConfiguration('<?php echo $listType ?>', itemId);
+        return false;
+    },
+
+    cbOnLoadIframe: function (response) {
+        if (!response.ok) {
+            return;
+        }
+        this.reload();
+    },
+
+
+    removeItem: function (itemId) {
+        if (!itemId) {
+            alert('<?php echo $block->escapeJsQuote(__('No item specified.')) ?>');
+            return false;
+        }
+        if(!confirm('<?php echo $block->escapeJsQuote(__('Are you sure you want to remove this item?')) ?>')) {
+            return false;
+        }
+        this.reload({'delete':itemId});
+        return false;
+    }
+
+};
+</script>
+<?php endif ?>
+<br />
