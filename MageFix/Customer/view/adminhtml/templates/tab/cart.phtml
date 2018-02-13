@@ -13,6 +13,17 @@
 <?php
     $listType = $block->getJsObjectName();
 ?>
+
+<style>
+    .col-action > a:first-of-type {
+        display: none;
+    }
+
+    .col-action > a:first-of-type + br {
+        display: none;
+    }
+</style>
+
 <script type="text/javascript">
 <?php echo $block->getJsObjectName() ?>cartControl = {
     reload: function (params) {
