@@ -11,6 +11,8 @@ As usual for Magento 2 modules
 
 Version
 --
+0.0.3 - Fixes a fatal error that occurs when products have options in the cart
+
 0.0.2 - Allow products deletion
 
 0.0.1 - Initial commit
